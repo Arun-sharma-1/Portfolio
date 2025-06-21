@@ -13,7 +13,7 @@ const HeroSection = () => {
                             alt="Avatar"
                         />
                     </div>
-                    <p className='text-[24px] bg-[#FBE6D0] leading-[36px] text-center'>Hi Im Arun</p>
+                    <p className='text-[24px] bg-[#FBE6D0] leading-[36px] text-center'>Hi I'm Arun</p>
                 </div>
                 <p className='font-bold leading-[42px] md:leading-[58px] text-[32px] md:text-[48px] selection text-center'>Merging beautiful frontends <br /> with bulletproof backends.</p>
 
