@@ -1,7 +1,7 @@
 import React from "react"
 import './globals.css'
 import { Raleway } from 'next/font/google'
-import { ThemeProvider } from "@/provider/themeProvider";
+import ThemeProvider from "@/provider/themeProvider";
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -12,9 +12,9 @@ const raleway = Raleway({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <html lang="en">
     <body>
-      <div className="">
-        <ThemeProvider>{children}</ThemeProvider>
-      </div>
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
     </body>
   </html>
 }

@@ -1,17 +1,25 @@
+// components/ThemeProvider.tsx
 'use client'
-import { useState, useEffect } from 'react'
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState('light')
+import { useEffect, useState } from 'react'
+
+export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light'
-    setTheme(savedTheme)
+    const storedTheme = localStorage.getItem('theme')
+    if (storedTheme === 'dark') {
+      document.documentElement.classList.add('dark')
+      document.documentElement.classList.remove('light')
+    } else {
+      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.add('light')
+    }
+    setMounted(true)
   }, [])
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
+  // Avoid hydration mismatch
+  if (!mounted) return null
 
   return <>{children}</>
 }

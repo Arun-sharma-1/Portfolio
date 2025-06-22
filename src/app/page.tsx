@@ -4,8 +4,8 @@ import React from 'react'
 
 const RootPage = () => {
   return (
-    <div className='bg-[var(--background-color)] relative p-[15px]'>
 
+    <div className='relative p-[15px]'>
       {/* header  */}
       <HeaderRootComponent />
       {/* hero section */}
@@ -14,6 +14,7 @@ const RootPage = () => {
       </section>
 
     </div>
+    
   )
 }
 

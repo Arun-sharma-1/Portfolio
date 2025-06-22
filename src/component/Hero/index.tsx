@@ -8,20 +8,18 @@ const HeroSection = () => {
                 <div className="flex flex-col gap-3">
                     <div className="w-40 h-40 rounded-full overflow-hidden landingimganimation">
                         <img
-                            src="/landingimage.png"
+                            src='/arun-hero-img.png'
                             className="w-full h-full object-center "
                             alt="Avatar"
                         />
                     </div>
-                    <p className='text-[24px] bg-[#FBE6D0] leading-[36px] text-center'>Hi I'm Arun</p>
+                    <p className='text-[24px]  leading-[36px] text-center'>Hi I'm Arun</p>
                 </div>
                 <p className='font-bold leading-[42px] md:leading-[58px] text-[32px] md:text-[48px] selection text-center'>Merging beautiful frontends <br /> with bulletproof backends.</p>
 
                 <p className='leading-[24px] md:text-[16px] font-normal selection text-center'>Full stack developer with an eye for detail and a heart for clean architecture.</p>
 
-                <button className='bg-black py-4 px-6 text-white rounded-full flow-btn relative z-10 cursor-pointer overflow-hidden'>CONNECT WITH ME</button>
-
-
+                <button className='bg-black py-4 px-6 text-white hover:text-black border-2 rounded-full flow-btn relative z-10 cursor-pointer overflow-hidden'>CONNECT WITH ME</button>
 
                 <div className='h-[1px] w-full bg-[#FBE6D0] mt-20'></div>
 
