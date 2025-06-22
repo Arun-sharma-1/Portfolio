@@ -13,13 +13,17 @@ body {
 
 :root {
   --primary-color: #FDE5A7;
-  --bg-color: #fff;
+  --bg-color: #ffffff;
+  --sec-bg-color:#1B1B1B;
   --text-color: #000;
+  --sec-text-color:#ffffff;
 }
 
 .dark {
   --bg-color: #1B1B1B;
+  --sec-bg-color:#ffffff;
   --text-color: #ffffff;
+  --sec-text-color:#000;
 }
 
 body {
@@ -121,7 +125,7 @@ section::selection {
   }
 
   100% {
-    transform: translateY(-180px);
+    transform: translateY(-270px);
     opacity: 0;
     visibility: hidden;
   }
@@ -140,7 +144,7 @@ section::selection {
   }
 
   100% {
-    transform: translateY(-180px);
+    transform: translateY(-270px);
     opacity: 0;
     visibility: hidden;
   }
@@ -159,7 +163,7 @@ section::selection {
   }
 
   100% {
-    transform: translateY(-180px);
+    transform: translateY(-270px);
     opacity: 0;
     visibility: hidden;
   }

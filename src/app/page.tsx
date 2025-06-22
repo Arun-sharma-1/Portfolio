@@ -1,5 +1,6 @@
 import HeaderRootComponent from '@/component/header'
-import HeroSection from '@/component/Hero'
+import HeroSection from '@/component/hero'
+import SkillsSection from '@/component/skills'
 import React from 'react'
 
 const RootPage = () => {
@@ -9,12 +10,15 @@ const RootPage = () => {
       {/* header  */}
       <HeaderRootComponent />
       {/* hero section */}
-      <section className='mt-10'>
+      <section className="mt-10">
         <HeroSection />
       </section>
-
+      {/* skills section  */}
+      <section className='lg:mt-20'>
+        <SkillsSection />
+      </section>
     </div>
-    
+
   )
 }
 

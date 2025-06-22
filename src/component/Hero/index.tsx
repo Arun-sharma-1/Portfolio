@@ -1,7 +1,7 @@
 import React from 'react'
 const HeroSection = () => {
     return (
-        <div className=' max-w-[1300px] mx-auto flex justify-center items-center mt-26 flex-auto'>
+        <div className='w-full md:max-w-9/12 mx-auto flex justify-center items-center mt-22 flex-auto'>
 
             <div className="flex flex-col gap-5 justify-center items-center">
 
@@ -21,7 +21,7 @@ const HeroSection = () => {
 
                 <button className='bg-black py-4 px-6 text-white hover:text-black border-2 rounded-full flow-btn relative z-10 cursor-pointer overflow-hidden'>CONNECT WITH ME</button>
 
-                <div className='h-[1px] w-full bg-[#FBE6D0] mt-20'></div>
+                <div className='h-[1px] w-full bg-[#FBE6D0] mt-20 lg:mt-40'></div>
 
                 {/* image animation section  */}
                 <div>

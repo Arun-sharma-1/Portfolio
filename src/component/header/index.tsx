@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import CommonButton from '../button'
+import CommonButton from '../resumebtn'
 import { Lamp, Menu } from 'lucide-react'
 import useTheme from '@/hooks/useTheme'
 
@@ -8,7 +8,7 @@ const HeaderRootComponent = () => {
     const [currentTheme, setCurrentTheme] = useTheme();
     console.log('currentTheme in header',currentTheme)
     return (
-        <div className='fixed top-0 pt-[35px]  md:pt-5 flex justify-evenly md:justify-between items-center w-full  z-100 gap-20'>
+        <div className='fixed top-0 pt-[35px] bg-[var(--bg-color)] md:pt-5 flex justify-evenly md:justify-between items-center w-full z-100 gap-20'>
             <div className='text-1xl font-semibold leading-1.5 md:ml-[200px]'>ARUN</div>
             <div className='flex gap-[15px] md:hidden cursor-pointer'>
                 <Lamp onClick={()=>setCurrentTheme((prev)=>(prev === 'light' ? 'dark' : 'light'))}/>
