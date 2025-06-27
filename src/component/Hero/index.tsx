@@ -1,7 +1,7 @@
 import React from 'react'
 const HeroSection = () => {
     return (
-        <div className='w-full md:max-w-9/12 mx-auto flex justify-center items-center mt-22 flex-auto'>
+        <div className='w-full h-full md:max-w-9/12 mx-auto flex justify-center items-center mt-22 flex-auto'>
 
             <div className="flex flex-col gap-5 justify-center items-center">
 
