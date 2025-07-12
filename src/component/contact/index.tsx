@@ -11,6 +11,7 @@ import {
 import React from "react";
 import { Link } from "lucide-react";
 import { InstagramIcon } from "@/lib/Icon";
+import useThrottle from "@/hooks/useThrottle";
 
 const ContactComponent = () => {
   const initialValue = {
@@ -21,10 +22,9 @@ const ContactComponent = () => {
     message: "",
   };
   const { formData, setFields, handleChange } = useForm(initialValue);
-  function submitHandler(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
 
-    const { firstName, lastName, emailAddress, message } = formData;
+  const submitHandler = useThrottle(function () {
+    const { firstName, emailAddress, message } = formData;
 
     if (
       !firstName.trim() ||
@@ -38,16 +38,15 @@ const ContactComponent = () => {
       return;
     }
 
-    console.log("formData", formData);
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
     emailjs
       .send(
-        serviceId, // Your service ID
-        templateId, // Your template ID
+        serviceId, 
+        templateId,
         formData,
-        publicKey // Your EmailJS public key
+        publicKey
       )
       .then(
         (result) => {
@@ -60,8 +59,8 @@ const ContactComponent = () => {
       );
 
     setFields(initialValue);
-  }
-
+  },
+  1000);
   return (
     <>
       <div className="mt-20 flex items-center justify-center">
@@ -70,7 +69,10 @@ const ContactComponent = () => {
             <h2 className="text-2xl md:text-4xl font-bold mb-6 text-center">
               🚀 Get in Touch
             </h2>
-            <form className="space-y-6" onSubmit={(e) => submitHandler(e)}>
+            <form className="space-y-6" onSubmit={(e) => {
+              e.preventDefault();
+              submitHandler()
+            }}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="relative">
                   <input
@@ -225,7 +227,7 @@ const ContactComponent = () => {
                         className="w-10 h-10 text-[var(--sec-bg-color)]"
                       /> */}
 
-                      <InstagramIcon width="80px" height="46px"/>
+                      <InstagramIcon width="80px" height="46px" />
                     </a>
                     <span>arun.sharma.31</span>
                   </div>

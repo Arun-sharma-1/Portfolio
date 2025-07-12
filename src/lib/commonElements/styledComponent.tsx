@@ -52,3 +52,15 @@ export const ButtonStyled = styled.button`
     box-shadow: 0 0 20px #00ffc3;
   }
 `;
+
+export const AnimatedUnderline = styled.div`
+  width: 0%;
+  height: 2px;
+  background: var(--sec-bg-color);
+  transition: width 0.5s ease;
+
+  .group:hover & {
+    width: 100%;
+  }
+`
+
