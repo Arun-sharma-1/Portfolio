@@ -6,13 +6,13 @@ import {
   InstagramIcon,
   LinkedinIcon,
   Whatsapp,
-} from "@/utils/Icon";
+} from "@/lib/Icon";
 const Footer = () => {
   const socialIconArray = [
-    { icon: <LinkedinIcon width="100%" height="100%" />, link: "" },
-    { icon: <GithubIcon width="30px" height="30px" />, link: "" },
-    { icon: <Whatsapp width="30px" height="30px" />, link: "" },
-    { icon: <InstagramIcon width="30px" height="30px" />, link: "" },
+    { icon: <LinkedinIcon width="100%" height="100%" />, link: "https://www.linkedin.com/in/arun31" },
+    { icon: <GithubIcon width="30px" height="30px" />, link: "https://github.com/Arun-sharma-1" },
+    { icon: <Whatsapp width="30px" height="30px" />, link: "https://wa.me/9116016932" },
+    { icon: <InstagramIcon width="30px" height="30px" />, link: "https://instagram.com/arun.sharma.31" },
   ];
   return (
     <div className="w-full m-5 md:max-w-9/12 mx-auto h-full flex justify-between mt-10 items-center gap-6 p-3 box-border">
@@ -21,15 +21,16 @@ const Footer = () => {
       </div>
       <div className="flex gap-5 md:gap-5 justify-between items-start">
         {socialIconArray?.map((img: any, idx: number) => (
-          <Link
-            href="/a"
+          <a
+            href={img.link}
             className="flex gap-6 cursor-pointer"
             key={img?.icon + idx}
+            target="_blank"
           >
             <div className="md:hover:h-[33px] md:hover:w-[33px] h-[20px] w-[20px] md:h-[30px] md:w-[30px] transition-all duration-300">
               {img?.icon}
             </div>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

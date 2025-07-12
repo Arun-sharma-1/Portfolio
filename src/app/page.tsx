@@ -1,3 +1,4 @@
+import ContactComponent from "@/component/contact";
 import Footer from "@/component/footer/page";
 import HeaderRootComponent from "@/component/header";
 import HeroSection from "@/component/hero";
@@ -16,6 +17,10 @@ const RootPage = () => {
       {/* skills section  */}
       <section className="">
         <SkillsSection />
+      </section>
+      {/* contact section  */}
+      <section>
+        <ContactComponent />
       </section>
       {/* footer section  */}
       <footer className="w-full">
