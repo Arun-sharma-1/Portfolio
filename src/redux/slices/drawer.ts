@@ -2,22 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 // get state = useAppSelector
 // use reducer = useDispatch
 const initialState = {
-    isOpen:false
-}
+  isOpen: false,
+  children: null,
+};
 
 const drawerSlice = createSlice({
-    name: "drawer",
-    initialState,
-    reducers: {
-        openDrawer: (state) => {
-            state.isOpen = true;
-        },
-        closeDrawer: (state) => {
-            state.isOpen = false
-        }
-    }
-    
-})
+  name: "drawer",
+  initialState,
+  reducers: {
+    openDrawer: (state, action) => {
+      return {
+        ...state,
+        ...action.payload,
+        chilren: action.payload.children,
+      };
+    },
+    closeDrawer: (state) => {
+      return {
+        ...initialState,
+      };
+    },
+  },
+});
 
-export const {openDrawer , closeDrawer} = drawerSlice.actions;
-export default drawerSlice.reducer; 
+export const { openDrawer, closeDrawer } = drawerSlice.actions;
+export default drawerSlice.reducer;

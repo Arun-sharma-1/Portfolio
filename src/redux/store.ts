@@ -4,6 +4,10 @@ import { AllReducers } from "./slices";
 export const makeStore = () => {
   return configureStore({
     reducer: AllReducers,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
   });
 };
 

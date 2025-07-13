@@ -4,6 +4,7 @@ import { Raleway } from "next/font/google";
 import ThemeProvider from "@/provider/themeProvider";
 import { Toaster } from "react-hot-toast";
 import StoreProvider from "@/redux/storeProvider";
+import LayoutComponent from "@/component/shared/layout";
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <Toaster position="top-center" />
-          <StoreProvider>{children}</StoreProvider>
+          <StoreProvider>
+            <LayoutComponent>{children}</LayoutComponent>
+          </StoreProvider>
         </ThemeProvider>
       </body>
     </html>
