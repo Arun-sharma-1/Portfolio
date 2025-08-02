@@ -1,6 +1,7 @@
+'use client'
 import Link from "next/link";
 import React from "react";
-
+import { motion } from "framer-motion";
 const SkillsSection = () => {
   const skillNameArray = [
     "javascript.svg",
@@ -60,7 +61,15 @@ const SkillsSection = () => {
         >
           {skillNameArray?.map((img: string) => {
             return (
-              <div
+              <motion.div
+                drag
+                dragConstraints={{
+                  left: -100,
+                  top: -100,
+                  right: 100,
+                  bottom:100
+                  
+                }}
                 key={img}
                 className="relative group w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 border-2 cursor-pointer rounded-[10px] border-[#EDF2F7] bg-[#EDF2F7] text-center flex justify-center items-center
                     "
@@ -74,7 +83,7 @@ const SkillsSection = () => {
                   width={"90%"}
                   className="object-cover"
                 />
-              </div>
+              </motion.div>
             );
           })}
         </div>

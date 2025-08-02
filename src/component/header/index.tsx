@@ -7,7 +7,7 @@ import Link from "next/link";
 import { AnimatedUnderline } from "@/lib/commonElements/styledComponent";
 import { useDispatch } from "react-redux";
 import { closeDrawer, openDrawer } from "@/redux/slices/drawer";
-
+import { motion } from "framer-motion";
 const HeaderRootComponent = () => {
   const [currentTheme, setCurrentTheme] = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -16,16 +16,35 @@ const HeaderRootComponent = () => {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      const offset = 100;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth",
+      });
+  
       dispatch(closeDrawer());
     }
   };
+  
 
+  const parentHeaderVarient = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3 },
+    },
+  };
+  const childHeaderVarient = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0 },
+  };
   const menuHandler = () => {
     dispatch(
       openDrawer({
         children: (
-          <div className="relative mt-10 flex flex-col gap-4 text-center font-semibold text-[14px] p-6">
+          <div className="relative mt-10 h-[500px] overflow-hidden flex flex-col gap-4 text-center font-semibold text-[14px] p-6">
             {/* Cross Button */}
             <button
               onClick={() => dispatch(closeDrawer())}
@@ -34,15 +53,24 @@ const HeaderRootComponent = () => {
               <X size={24} />
             </button>
 
-            <div className="cursor-pointer group mt-8" onClick={() => scrollToSection("skills")}>
+            <div
+              className="cursor-pointer group mt-8"
+              onClick={() => scrollToSection("skills")}
+            >
               <div>SKILLS</div>
               <AnimatedUnderline />
             </div>
-            <div className="cursor-pointer group" onClick={() => scrollToSection("project")}>
+            <div
+              className="cursor-pointer group"
+              onClick={() => scrollToSection("projects")}
+            >
               <div>PROJECTS</div>
               <AnimatedUnderline />
             </div>
-            <div className="cursor-pointer group" onClick={() => scrollToSection("contact")}>
+            <div
+              className="cursor-pointer group"
+              onClick={() => scrollToSection("contact")}
+            >
               <div>CONTACT</div>
               <AnimatedUnderline />
             </div>
@@ -74,7 +102,10 @@ const HeaderRootComponent = () => {
         scrolled ? "pt-3" : "pt-[35px] md:pt-5"
       } transition-all duration-300 back backdrop-blur-xl backdrop:fill-teal-50  flex justify-evenly md:justify-between items-center w-full z-100 gap-20`}
     >
-      <div className="text-1xl font-semibold leading-1.5 md:ml-[200px] cursor-pointer" onClick={() => scrollToSection("hero")}>
+      <div
+        className="text-1xl font-semibold leading-1.5 md:ml-[200px] cursor-pointer"
+        onClick={() => scrollToSection("hero")}
+      >
         ARUN
       </div>
 
@@ -91,30 +122,53 @@ const HeaderRootComponent = () => {
       </div>
 
       {/* desktop view */}
-      <div className="hidden md:flex flex-row gap-6 items-center  font-semibold text-[13px] mr-[280px]">
-        <div className="flex flex-col gap-1 cursor-pointer group pt-2">
-          <div className="" onClick={() => scrollToSection("skills")}>SKILLS</div>
+      <motion.div
+        variants={parentHeaderVarient}
+        initial="hidden"
+        animate="visible"
+        className="hidden md:flex flex-row gap-6 items-center  font-semibold text-[13px] mr-[280px]"
+      >
+        <motion.div
+          variants={childHeaderVarient}
+          className="flex flex-col gap-1 cursor-pointer group pt-2"
+        >
+          <div className="" onClick={() => scrollToSection("skills")}>
+            SKILLS
+          </div>
           <AnimatedUnderline />
-        </div>
-        <div className="flex flex-col gap-1 cursor-pointer group pt-2" onClick={() => scrollToSection("projects")}>
+        </motion.div>
+
+        <motion.div
+          variants={childHeaderVarient}
+          className="flex flex-col gap-1 cursor-pointer group pt-2"
+          onClick={() => scrollToSection("projects")}
+        >
           <div className="">PROJECTS</div>
           <AnimatedUnderline />
-        </div>
-        <div className="flex flex-col gap-1 cursor-pointer group pt-2" onClick={() => scrollToSection("contact")}>
+        </motion.div>
+        <motion.div
+          variants={childHeaderVarient}
+          className="flex flex-col gap-1 cursor-pointer group pt-2"
+          onClick={() => scrollToSection("contact")}
+        >
           <div className="">CONTACT</div>
           <AnimatedUnderline />
-        </div>
-        <Link href={`/doc/resume.pdf`} target="_blank">
-          <ResumeButton text="RESUME" />
-        </Link>
-        <div className="cursor-pointer">
+        </motion.div>
+        <motion.div variants={childHeaderVarient}>
+          <Link href={`/doc/resume.pdf`} target="_blank">
+            <ResumeButton text="RESUME" />
+          </Link>
+        </motion.div>
+        <motion.div
+          variants={childHeaderVarient}
+          className="cursor-pointer">
           <Lamp
             onClick={() =>
               setCurrentTheme((prev) => (prev === "light" ? "dark" : "light"))
             }
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
