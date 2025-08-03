@@ -9,7 +9,7 @@ import {
   GlowingBorder,
 } from "@/lib/commonElements/styledComponent";
 import React from "react";
-import { Link } from "lucide-react";
+// import { Link } from "lucide-react";
 import { InstagramIcon } from "@/lib/Icon";
 import useThrottle from "@/hooks/useThrottle";
 
@@ -49,7 +49,7 @@ const ContactComponent = () => {
         publicKey
       )
       .then(
-        (result) => {
+        () => {
           toast.success("Form submitted successfully!");
           // console.log("Email sent successfully!", result.text);
         },

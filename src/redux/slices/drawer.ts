@@ -17,7 +17,7 @@ const drawerSlice = createSlice({
         chilren: action.payload.children,
       };
     },
-    closeDrawer: (state) => {
+    closeDrawer: () => {
       return {
         ...initialState,
       };

@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "next/link";
-import { Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
+// import Link from "next/link";
+// import { Github, Instagram, Linkedin, MessageCircle } from "lucide-react";
 import {
   GithubIcon,
   InstagramIcon,

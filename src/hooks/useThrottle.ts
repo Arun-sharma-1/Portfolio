@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const useThrottle = (fn: any, delay: number) => {
   const timerRef: any = useRef(null);
