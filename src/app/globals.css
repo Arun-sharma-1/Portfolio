@@ -10,7 +10,7 @@ body {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
   scroll-behavior: smooth;
-  
+
 }
 
 :root {
@@ -19,7 +19,7 @@ body {
   --sec-bg-color: #1B1B1B;
   --text-color: #000;
   --sec-text-color: #ffffff;
-  
+
 }
 
 .dark {
@@ -185,5 +185,17 @@ section::selection {
     transform: translateY(-270px);
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

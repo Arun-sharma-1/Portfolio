@@ -63,7 +63,7 @@ const ContactComponent = () => {
   1000);
   return (
     <>
-      <div className="mt-20 flex items-center justify-center">
+      <div className="mt-0 sm:mt-20 flex items-center justify-center">
         <GlowingBorder>
           <GlassCard className="p-[1rem] md:p-[2rem]">
             <h2 className="text-2xl md:text-4xl font-bold mb-6 text-center">

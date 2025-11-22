@@ -19,14 +19,28 @@ const projects = [
       "MariaDB",
       "Twilio",
     ],
-    image: "/images/studynotion.png",
+    image: "/projects/cpd.jpeg",
   },
   {
     title: "Best Corporate Event",
     description:
       "An event management admin platform with multiple user roles, enabling seamless management of facilitators and their respective sites..",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
-    image: "/images/foodiezone.png",
+    image: "/projects/bce.jpeg",
+  },
+  {
+    title: "Adminify",
+    description:
+      "A comprehensive platform for managing Meta (Facebook) advertising campaigns with real-time insights, performance analytics, and detailed data visualization for Facebook ads.",
+    tech: [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "TypeORM",
+      "Context API",
+      "Tailwind CSS",
+    ],
+    image: "/projects/adminify.jpeg",
   },
   {
     title: "Portfolio",
@@ -47,12 +61,14 @@ const ProjectScroller = () => {
   const containerRef = useRef(null);
   const wrapperRef = useRef<any>(null);
   const [screenWidth, setScreenWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updateWidth = () => {
       if (wrapperRef.current) {
         setScreenWidth(wrapperRef.current.offsetWidth);
       }
+      setIsMobile(window.innerWidth < 640);
     };
     updateWidth();
     window.addEventListener("resize", updateWidth);
@@ -73,45 +89,47 @@ const ProjectScroller = () => {
   return (
     <section
       ref={containerRef}
-      style={{ height: `${projects.length * 90}vh` }}
+      style={{ height: `${projects.length * (isMobile ? 80 : 90)}vh` }}
       className="relative"
     >
-      <p className="text-2xl md:text-3xl leading-10 text-center font-semibold m-6">
+      <p className="text-xl sm:text-2xl md:text-3xl leading-10 text-center font-semibold m-4 sm:m-6">
         PROJECTS
-       </p>
+      </p>
       <div
         ref={wrapperRef}
-        className="sticky top-0 h-screen overflow-hidden text-[var(--text-color)]"
+        className="sticky top-10 h-screen overflow-hidden text-[var(--text-color)]"
       >
         <motion.div
           style={{
             x,
             width: `${projects.length * screenWidth}px`,
           }}
-          className="flex h-full"
+          className="flex h-full mt-10 sm:mt-0"
         >
           {projects.map((project, index) => (
             <div
               key={index}
               style={{ width: `${screenWidth}px` }}
-              className="h-full flex flex-row items-center justify-center gap-6 px-4 py-5 border-[1px] border-[var(--sec-bg-color)]"
+              className="h-max sm:h-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 sm:px-6 py-4 sm:py-5 border-w-d sm:border-r-[1px] border-[var(--sec-bg-color)] overflow-y-auto"
             >
               {/* LEFT */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="flex-1 space-y-6"
+                className="flex-1 space-y-4 sm:space-y-6 w-full sm:w-auto"
               >
-                <h2 className="text-3xl sm:text-4xl font-bold ">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center sm:text-left">
                   {project.title}
                 </h2>
-                <p className="text-base sm:text-lg">{project.description}</p>
-                <div className="flex flex-wrap gap-3">
+                <p className="text-sm sm:text-base md:text-lg text-center sm:text-left">
+                  {project.description}
+                </p>
+                <div className="hidden sm:flex flex-wrap gap-2 sm:gap-3">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-2 md:px-4 py-1 bg-cyan-600 text-sm rounded-full"
+                      className="px-2 sm:px-3 md:px-4 py-1 bg-cyan-600 text-xs sm:text-sm rounded-full whitespace-nowrap"
                     >
                       {tech}
                     </span>
@@ -124,14 +142,24 @@ const ProjectScroller = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="flex-1 flex justify-center"
+                className="flex-1 flex flex-col items-center justify-center w-full sm:w-auto sm:h-full "
               >
-                <div className="rounded-xl  border-4 border-cyan-500 shadow-xl w-full max-w-[450px]">
+                <div className="rounded-xl border-4 border-cyan-500 shadow-xl w-full max-w-full sm:max-w-[500px] mb-4 sm:mb-0 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="object-unset w-full h-[300px] sm:h-[400px]"
+                    className="object-contain w-full h-[250px] sm:h-[350px] md:h-[400px] rounded-lg"
                   />
+                </div>
+                <div className="sm:hidden flex flex-wrap gap-2 justify-center w-full px-2">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-2 sm:px-3 py-1 bg-cyan-600 text-xs sm:text-sm rounded-full whitespace-nowrap"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
             </div>
