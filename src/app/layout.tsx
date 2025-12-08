@@ -5,7 +5,8 @@ import ThemeProvider from "@/provider/themeProvider";
 import { Toaster } from "react-hot-toast";
 import StoreProvider from "@/redux/storeProvider";
 import LayoutComponent from "@/component/shared/layout";
-import { Metadata } from "next/dist/types";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
