@@ -53,7 +53,9 @@ const CustomDrawer: FC<Props> = ({ position = "right" }) => {
   const baseClasses =
     "fixed bg-[var(--bg-color)] shadow-lg transition-transform duration-300 ease-in-out";
   let positionClasses = "";
-  let transformClass = animate ? getFinalTransform() : getInitialTransform(position);
+  const transformClass = animate
+    ? getFinalTransform()
+    : getInitialTransform(position);
 
   switch (position) {
     case "right":
@@ -79,7 +81,7 @@ const CustomDrawer: FC<Props> = ({ position = "right" }) => {
     >
       <div
         className={`${baseClasses} ${positionClasses} ${transformClass} border-l-[0.1px]  border-l-white text-[var(--text-color)]`}
-        onClick={onDrawerClick} 
+        onClick={onDrawerClick}
       >
         {children}
       </div>
