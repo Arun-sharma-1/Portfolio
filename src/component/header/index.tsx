@@ -45,42 +45,43 @@ const HeaderRootComponent = () => {
     console.log("button clicked..", isOpen, children);
     dispatch(
       openDrawer({
-        children: (
-          <div className="relative mt-10 h-[500px] overflow-hidden flex flex-col gap-4 text-center font-semibold text-[14px] p-6">
-            {/* Cross Button */}
-            <button
-              onClick={() => dispatch(closeDrawer())}
-              className="absolute top-0 right-10 text-var[--sec-bg-color] cursor-pointer dark:hover:text-white"
-            >
-              <X size={24} />
-            </button>
+        children: null,
+        // children: (
+        //   <div className="relative mt-10 h-[500px] overflow-hidden flex flex-col gap-4 text-center font-semibold text-[14px] p-6">
+        //     {/* Cross Button */}
+        //     <button
+        //       onClick={() => dispatch(closeDrawer())}
+        //       className="absolute top-0 right-10 text-var[--sec-bg-color] cursor-pointer dark:hover:text-white"
+        //     >
+        //       <X size={24} />
+        //     </button>
 
-            <div
-              className="cursor-pointer group mt-8"
-              onClick={() => scrollToSection("skills")}
-            >
-              <div>SKILLS</div>
-              <AnimatedUnderline />
-            </div>
-            <div
-              className="cursor-pointer group"
-              onClick={() => scrollToSection("projects")}
-            >
-              <div>PROJECTS</div>
-              <AnimatedUnderline />
-            </div>
-            <div
-              className="cursor-pointer group"
-              onClick={() => scrollToSection("contact")}
-            >
-              <div>CONTACT</div>
-              <AnimatedUnderline />
-            </div>
-            <Link href={`/doc/resume.pdf`} target="_blank">
-              <ResumeButton text="RESUME" />
-            </Link>
-          </div>
-        ),
+        //     <div
+        //       className="cursor-pointer group mt-8"
+        //       onClick={() => scrollToSection("skills")}
+        //     >
+        //       <div>SKILLS</div>
+        //       <AnimatedUnderline />
+        //     </div>
+        //     <div
+        //       className="cursor-pointer group"
+        //       onClick={() => scrollToSection("projects")}
+        //     >
+        //       <div>PROJECTS</div>
+        //       <AnimatedUnderline />
+        //     </div>
+        //     <div
+        //       className="cursor-pointer group"
+        //       onClick={() => scrollToSection("contact")}
+        //     >
+        //       <div>CONTACT</div>
+        //       <AnimatedUnderline />
+        //     </div>
+        //     <Link href={`/doc/resume.pdf`} target="_blank">
+        //       <ResumeButton text="RESUME" />
+        //     </Link>
+        //   </div>
+        // ),
         isOpen: true,
       })
     );
