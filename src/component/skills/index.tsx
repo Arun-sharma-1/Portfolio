@@ -72,7 +72,7 @@ const SkillsSection = () => {
                 Software Enginner
               </p>
               <p className="font-semibold text-[12px] sm:text-[14px]">
-                <Link target="_blank" href={"https://www.cloudanalogy.com/"}>
+                <Link target="_blank" href={"https://griphic.com/"}>
                   Griphic (SKETS STUDIO)
                 </Link>
               </p>
