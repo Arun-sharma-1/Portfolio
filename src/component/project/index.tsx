@@ -97,14 +97,14 @@ const ProjectScroller = () => {
       </p>
       <div
         ref={wrapperRef}
-        className="sticky top-10 h-screen overflow-hidden text-[var(--text-color)]"
+        className="sticky top-6 h-screen overflow-hidden text-[var(--text-color)]"
       >
         <motion.div
           style={{
             x,
             width: `${projects.length * screenWidth}px`,
           }}
-          className="flex h-full mt-10 sm:mt-0"
+          className="flex h-full mt-6 sm:mt-0"
         >
           {projects.map((project, index) => (
             <div
