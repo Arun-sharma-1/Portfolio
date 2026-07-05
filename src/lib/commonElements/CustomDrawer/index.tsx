@@ -2,6 +2,9 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { closeDrawer } from "@/redux/slices/drawer";
 import React, { FC, useEffect, useState } from "react";
+import { AnimatedUnderline } from "../styledComponent";
+import ResumeButton from "@/component/resumebtn";
+import { Link } from "lucide-react";
 
 interface Props {
   position?: "left" | "right" | "top" | "bottom";
@@ -25,7 +28,7 @@ const getInitialTransform = (position: string) => {
 const getFinalTransform = () => "translate-x-0 translate-y-0";
 
 const CustomDrawer: FC<Props> = ({ position = "right" }) => {
-  const { isOpen, children } = useAppSelector((state) => state.drawer);
+  const { isOpen } = useAppSelector((state) => state.drawer);
   const dispatch = useAppDispatch();
 
   const [shouldRender, setShouldRender] = useState(isOpen);
@@ -73,6 +76,20 @@ const CustomDrawer: FC<Props> = ({ position = "right" }) => {
     default:
       positionClasses = "top-0 right-0 h-full w-64";
   }
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 100;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth",
+      });
+
+      dispatch(closeDrawer());
+    }
+  };
 
   return (
     <div
@@ -83,7 +100,43 @@ const CustomDrawer: FC<Props> = ({ position = "right" }) => {
         className={`${baseClasses} ${positionClasses} ${transformClass} border-l-[0.1px]  border-l-white text-[var(--text-color)]`}
         onClick={onDrawerClick}
       >
-        {children}
+        {/* {children} */}
+        children: (
+        <div className="relative mt-10 h-[500px] overflow-hidden flex flex-col gap-4 text-center font-semibold text-[14px] p-6">
+          {/* Cross Button */}
+          <button
+            onClick={() => dispatch(closeDrawer())}
+            className="absolute top-0 right-10 text-var[--sec-bg-color] cursor-pointer dark:hover:text-white"
+          >
+            <X size={24} />
+          </button>
+
+          <div
+            className="cursor-pointer group mt-8"
+            onClick={() => scrollToSection("skills")}
+          >
+            <div>SKILLS</div>
+            <AnimatedUnderline />
+          </div>
+          <div
+            className="cursor-pointer group"
+            onClick={() => scrollToSection("projects")}
+          >
+            <div>PROJECTS</div>
+            <AnimatedUnderline />
+          </div>
+          <div
+            className="cursor-pointer group"
+            onClick={() => scrollToSection("contact")}
+          >
+            <div>CONTACT</div>
+            <AnimatedUnderline />
+          </div>
+          <Link href={`/doc/resume.pdf`} target="_blank">
+            <ResumeButton text="RESUME" />
+          </Link>
+        </div>
+        )
       </div>
     </div>
   );
