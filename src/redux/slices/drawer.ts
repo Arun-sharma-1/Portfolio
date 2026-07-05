@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // use reducer = useDispatch
 const initialState = {
   isOpen: false,
-  children: null,
+  // children: null,
 };
 
 const drawerSlice = createSlice({
@@ -14,7 +14,7 @@ const drawerSlice = createSlice({
       return {
         ...state,
         ...action.payload,
-        children: action?.payload?.children || null,
+        // children: action?.payload?.children || null,
       };
     },
     closeDrawer: () => {

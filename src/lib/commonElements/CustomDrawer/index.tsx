@@ -3,8 +3,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { closeDrawer } from "@/redux/slices/drawer";
 import React, { FC, useEffect, useState } from "react";
 import { AnimatedUnderline } from "../styledComponent";
-import ResumeButton from "@/component/resumebtn";
+imo;
 import { Link, X } from "lucide-react";
+import ResumeButton from "@/component/resumebtn";
 
 interface Props {
   position?: "left" | "right" | "top" | "bottom";
@@ -101,7 +102,6 @@ const CustomDrawer: FC<Props> = ({ position = "right" }) => {
         onClick={onDrawerClick}
       >
         {/* {children} */}
-        children: (
         <div className="relative mt-10 h-[500px] overflow-hidden flex flex-col gap-4 text-center font-semibold text-[14px] p-6">
           {/* Cross Button */}
           <button
@@ -136,7 +136,6 @@ const CustomDrawer: FC<Props> = ({ position = "right" }) => {
             <ResumeButton text="RESUME" />
           </Link>
         </div>
-        )
       </div>
     </div>
   );
