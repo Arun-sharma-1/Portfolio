@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { closeDrawer } from "@/redux/slices/drawer";
 import React, { FC, useEffect, useState } from "react";
 import { AnimatedUnderline } from "../styledComponent";
-imo;
 import { Link, X } from "lucide-react";
 import ResumeButton from "@/component/resumebtn";
 

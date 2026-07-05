@@ -13,7 +13,7 @@ const HeaderRootComponent = () => {
   const [currentTheme, setCurrentTheme] = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const dispatch = useDispatch();
-  const { children, isOpen } = useAppSelector((state) => state.drawer);
+  const { isOpen } = useAppSelector((state) => state.drawer);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -42,7 +42,6 @@ const HeaderRootComponent = () => {
     visible: { opacity: 1, x: 0 },
   };
   const menuHandler = () => {
-    console.log("button clicked..", isOpen, children);
     dispatch(
       openDrawer({
         children: null,
