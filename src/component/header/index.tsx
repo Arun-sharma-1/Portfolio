@@ -8,26 +8,27 @@ import { AnimatedUnderline } from "@/lib/commonElements/styledComponent";
 import { useDispatch } from "react-redux";
 import { closeDrawer, openDrawer } from "@/redux/slices/drawer";
 import { motion } from "framer-motion";
+import { useAppSelector } from "@/redux/hook";
 const HeaderRootComponent = () => {
   const [currentTheme, setCurrentTheme] = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const dispatch = useDispatch();
+  const { children, isOpen } = useAppSelector((state) => state.drawer);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       const offset = 100;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      
+
       window.scrollTo({
         top: elementPosition - offset,
         behavior: "smooth",
       });
-  
+
       dispatch(closeDrawer());
     }
   };
-  
 
   const parentHeaderVarient = {
     hidden: { opacity: 0 },
@@ -41,6 +42,7 @@ const HeaderRootComponent = () => {
     visible: { opacity: 1, x: 0 },
   };
   const menuHandler = () => {
+    console.log("button clicked..", isOpen, children);
     dispatch(
       openDrawer({
         children: (
@@ -159,9 +161,7 @@ const HeaderRootComponent = () => {
             <ResumeButton text="RESUME" />
           </Link>
         </motion.div>
-        <motion.div
-          variants={childHeaderVarient}
-          className="cursor-pointer">
+        <motion.div variants={childHeaderVarient} className="cursor-pointer">
           <Lamp
             onClick={() =>
               setCurrentTheme((prev) => (prev === "light" ? "dark" : "light"))
