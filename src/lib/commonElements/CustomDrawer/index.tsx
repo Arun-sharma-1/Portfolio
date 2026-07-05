@@ -4,7 +4,7 @@ import { closeDrawer } from "@/redux/slices/drawer";
 import React, { FC, useEffect, useState } from "react";
 import { AnimatedUnderline } from "../styledComponent";
 import ResumeButton from "@/component/resumebtn";
-import { Link } from "lucide-react";
+import { Link, X } from "lucide-react";
 
 interface Props {
   position?: "left" | "right" | "top" | "bottom";
